@@ -1,11 +1,13 @@
 import 'dart:io';
 
 import 'package:file_picker/file_picker.dart';
+import 'package:flutter/foundation.dart';
 import 'package:material_ui/material_ui.dart';
 
 import '../../core/config.dart';
 import '../../core/theme.dart';
 import '../../services/backup_service.dart';
+import '../../services/demo_service.dart';
 import '../../services/session.dart';
 import '../../services/sync_service.dart';
 import '../../state/app_state.dart';
@@ -56,6 +58,21 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => const Shell()), (_) => false);
     } catch (e) {
       if (mounted) toast(context, 'تعذر إنشاء المحل: $e', error: true);
+    } finally {
+      if (mounted) setState(() => _busy = false);
+    }
+  }
+
+  /// معاينة الويب: محل تجريبي جاهز بالبيانات.
+  Future<void> _demo() async {
+    setState(() => _busy = true);
+    try {
+      await DemoService.seed();
+      await AppState.I.load();
+      if (!mounted) return;
+      Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (_) => const Shell()), (_) => false);
+    } catch (e) {
+      if (mounted) toast(context, 'تعذر تجهيز البيانات التجريبية: $e', error: true);
     } finally {
       if (mounted) setState(() => _busy = false);
     }
@@ -138,6 +155,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     ),
                   ),
                 ]),
+                if (kIsWeb) ...[
+                  const SizedBox(height: 12),
+                  OutlinedButton.icon(
+                    onPressed: _busy ? null : _demo,
+                    icon: const Icon(Icons.play_circle_outline),
+                    label: const Text('جرّب ببيانات تجريبية (رمز المالك 123456)'),
+                  ),
+                ],
                 const SizedBox(height: 16),
                 AnimatedSwitcher(
                   duration: const Duration(milliseconds: 250),

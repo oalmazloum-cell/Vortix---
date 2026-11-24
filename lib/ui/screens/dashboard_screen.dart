@@ -67,8 +67,8 @@ class DashboardScreen extends StatelessWidget {
                     title: 'صافي الربح',
                     value: canProfit ? money(d.today.netProfit) : '••••',
                     icon: Icons.savings_outlined,
-                    color: VColors.emerald,
-                    subtitle: canProfit ? 'بعد المصاريف' : 'محمي برمز المالك',
+                    color: canProfit && d.today.netProfit < 0 ? VColors.coral : VColors.emerald,
+                    subtitle: canProfit ? (d.today.netProfit < 0 ? 'خسارة بعد المصاريف' : 'بعد المصاريف') : 'محمي برمز المالك',
                     onTap: canProfit ? null : () => requireOwner(context, reason: 'عرض الأرباح يحتاج رمز المالك'),
                   ),
                   StatCard(

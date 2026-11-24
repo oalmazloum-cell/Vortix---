@@ -74,7 +74,8 @@ class _ReportsScreenState extends State<ReportsScreen> {
                   spacing: 10,
                   children: [
                     StatCard(title: 'صافي المبيعات', value: money(s.netSales), icon: Icons.trending_up, color: VColors.emerald),
-                    StatCard(title: 'صافي الربح', value: money(s.netProfit), icon: Icons.savings_outlined, color: VColors.emerald),
+                    StatCard(title: 'صافي الربح', value: money(s.netProfit), icon: Icons.savings_outlined,
+                        color: s.netProfit < 0 ? VColors.coral : VColors.emerald),
                     StatCard(title: 'مجمل الربح', value: money(s.grossProfit), icon: Icons.stacked_line_chart),
                     StatCard(title: 'المصاريف', value: money(s.expenses), icon: Icons.receipt_outlined),
                     StatCard(title: 'عدد الفواتير', value: '${s.invoices}', icon: Icons.receipt_long_outlined,
@@ -90,7 +91,7 @@ class _ReportsScreenState extends State<ReportsScreen> {
                     KeyValueRow('- تكلفة البضاعة المباعة', money(s.cost - s.returnsCost)),
                     KeyValueRow('= مجمل الربح', money(s.grossProfit), bold: true),
                     KeyValueRow('- المصاريف', money(s.expenses)),
-                    KeyValueRow('= صافي الربح', money(s.netProfit), bold: true, color: VColors.emerald),
+                    KeyValueRow('= صافي الربح', money(s.netProfit), bold: true, color: s.netProfit < 0 ? VColors.coral : VColors.emerald),
                     const Divider(),
                     KeyValueRow('الخصومات الممنوحة', money(s.discounts)),
                     KeyValueRow('مبيعات آجلة (دين)', money(s.creditSales)),
