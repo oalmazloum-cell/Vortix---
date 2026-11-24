@@ -9,7 +9,7 @@ class AppConfig {
   static const trialDays = 6;
 
   /// رقم واتساب الدعم/المبيعات لطلب تفعيل الاشتراك (بالصيغة الدولية بدون +).
-  static const supportWhatsapp = '970590000000';
+  static const supportWhatsapp = '972599331547';
 
   /// المفتاح السري لتوليد أكواد التفعيل. غيّره، ولا تنشره، واستخدم نفس القيمة
   /// في أداة tool/gen_activation.dart.
