@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>فورتكس للمحاسبة — بيع، مخزون، ديون من جوالك</title>
+<meta name="description" content="تطبيق محاسبة لمحلك: بيع بالباركود، مخزون، ديون، فواتير واتساب وطباعة حرارية. يعمل بدون نت • مجاني لست أيام.">
+<meta name="theme-color" content="#0A192F">
+<!-- معاينة الرابط على مواقع التواصل -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:title" content="فورتكس للمحاسبة — حسابات محلك كلها من جوالك">
+<meta property="og:description" content="بيع بالباركود، مخزون، ديون، فواتير واتساب وطباعة حرارية. يعمل بدون نت • مجاني لست أيام • نزّله الآن">
+<meta property="og:image" content="https://oalmazloum-cell.github.io/Vortix---/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://oalmazloum-cell.github.io/Vortix---/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="assets/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #F1F5F9; --card: #FFFFFF; --navy: #0A192F; --navy2: #112240;
+    --blue: #1D4ED8; --blue2: #2563EB; --emerald: #059669; --coral: #F43F5E;
+    --text: #0F172A; --muted: #64748B; --border: #E2E8F0;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font-family: "IBM Plex Sans Arabic", system-ui, sans-serif; line-height: 1.7; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+
+  header.hero { background: radial-gradient(1200px 500px at 80% -10%, #1D4ED833, transparent), var(--navy);
+                color: #fff; padding: 20px 0 64px; border-radius: 0 0 32px 32px; }
+  nav { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; }
+  .logo { width: 40px; height: 40px; border-radius: 12px; display: grid; place-items: center;
+          background: linear-gradient(135deg, var(--blue2), var(--blue)); box-shadow: 0 6px 18px #1D4ED866; }
+  .logo svg { width: 26px; height: 26px; }
+  .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 32px; align-items: center; margin-top: 40px; }
+  h1 { font-size: clamp(32px, 6vw, 52px); line-height: 1.2; margin: 0 0 12px; }
+  .lead { font-size: clamp(17px, 2.6vw, 21px); color: #CBD5E1; margin: 0 0 22px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px; }
+  .pill { background: #ffffff14; border: 1px solid #ffffff22; padding: 6px 14px; border-radius: 999px; font-size: 14px; font-weight: 500; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; font-weight: 700; font-size: 18px;
+         padding: 16px 26px; border-radius: 16px; transition: transform .15s, box-shadow .15s; }
+  .btn:active { transform: scale(.98); }
+  .btn-blue { background: var(--blue); color: #fff; box-shadow: 0 10px 28px #1D4ED880; }
+  .btn-blue:hover { background: var(--blue2); }
+  .btn-ghost { background: #ffffff10; color: #fff; border: 1px solid #ffffff30; font-size: 16px; padding: 14px 20px; }
+  .btn svg { width: 22px; height: 22px; flex: none; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; }
+  .note { font-size: 13px; color: #94A3B8; margin-top: 12px; }
+  .phones { position: relative; height: 520px; }
+  .phone { position: absolute; width: 230px; border-radius: 30px; border: 8px solid #020C1B;
+           box-shadow: 0 30px 60px #0008; background: #000; overflow: hidden; }
+  .phone img { display: block; width: 100%; }
+  .phone.a { left: 8%; top: 30px; transform: rotate(-6deg); }
+  .phone.b { right: 6%; top: 0; z-index: 2; }
+
+  section { padding: 56px 0 8px; }
+  h2 { font-size: clamp(24px, 4vw, 34px); margin: 0 0 8px; text-align: center; }
+  .sub { text-align: center; color: var(--muted); margin: 0 0 30px; }
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 18px; padding: 20px;
+          box-shadow: 0 4px 14px #0F172A0D; }
+  .card h3 { margin: 10px 0 4px; font-size: 18px; }
+  .card p { margin: 0; color: var(--muted); font-size: 15px; }
+  .ic { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: #1D4ED814; color: var(--blue); }
+  .ic svg { width: 24px; height: 24px; }
+
+  .shots { display: flex; gap: 14px; overflow-x: auto; padding: 6px 4px 18px; scroll-snap-type: x mandatory; }
+  .shots img { width: 220px; flex: none; border-radius: 22px; border: 6px solid var(--navy);
+               box-shadow: 0 12px 30px #0F172A22; scroll-snap-align: center; }
+
+  .steps { counter-reset: s; display: grid; gap: 12px; max-width: 640px; margin: 0 auto; }
+  .step { display: flex; gap: 14px; align-items: flex-start; }
+  .step::before { counter-increment: s; content: counter(s); flex: none; width: 34px; height: 34px; border-radius: 50%;
+                  background: var(--navy); color: #fff; display: grid; place-items: center; font-weight: 700; }
+  .step p { margin: 4px 0 0; }
+
+  .final { background: var(--navy); color: #fff; border-radius: 28px; padding: 40px 20px; text-align: center; margin: 48px 0 24px; }
+  .final h2 { color: #fff; }
+  .final .sub { color: #CBD5E1; }
+  .final .cta { justify-content: center; }
+  footer { text-align: center; color: var(--muted); font-size: 14px; padding: 8px 0 32px; }
+
+  .sticky { position: fixed; inset: auto 12px 12px 12px; z-index: 10; display: none; }
+  .sticky .btn { width: 100%; }
+
+  @media (max-width: 820px) {
+    .hero-grid { grid-template-columns: 1fr; text-align: center; }
+    .pills, .cta { justify-content: center; }
+    .phones { height: 400px; max-width: 380px; margin: 0 auto; width: 100%; }
+    .phone { width: 180px; }
+    .grid { grid-template-columns: 1fr 1fr; }
+    .sticky { display: block; }
+    body { padding-bottom: 84px; }
+  }
+  @media (max-width: 480px) {
+    .grid { grid-template-columns: 1fr; }
+    .cta .btn { width: 100%; }
+    nav .btn { padding: 10px 16px; font-size: 15px; }
+    .phone { width: 160px; }
+    .phones { height: 360px; }
+  }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <nav>
+      <div class="brand">
+        <span class="logo"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"><path d="M12 3a9 9 0 1 0 9 9"/><path d="M12 7a5 5 0 1 0 5 5"/><circle cx="12" cy="12" r="1.6" fill="#fff"/></svg></span>
+        فورتكس للمحاسبة
+      </div>
+      <a class="btn btn-ghost" href="#download">تنزيل</a>
+    </nav>
+    <div class="hero-grid">
+      <div>
+        <h1>حسابات محلك كلها<br>من جوالك</h1>
+        <p class="lead">بيع، مخزون، ديون، وحسابات محلك كلها من جوالك — بالباركود وبدون تعقيد.</p>
+        <div class="pills">
+          <span class="pill">✓ يعمل بدون نت</span>
+          <span class="pill">✓ مجاني لست أيام</span>
+          <span class="pill">✓ بياناتك محفوظة</span>
+        </div>
+        <div class="cta" id="download">
+          <a class="btn btn-blue dl" href="https://github.com/oalmazloum-cell/Vortix---/releases/latest/download/vortex.apk">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0-5-5m5 5 5-5M4 19h16"/></svg>
+            نزّل التطبيق لأندرويد
+          </a>
+          <a class="btn btn-ghost wa" href="https://wa.me/972599331547?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A8%D8%AF%D9%8A%20%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%B1%20%D8%B9%D9%86%20%D8%AA%D8%B7%D8%A8%D9%8A%D9%82%20%D9%81%D9%88%D8%B1%D8%AA%D9%83%D8%B3">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.1l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4.3-.4.7-1.4.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3Z"/></svg>
+            استفسار عبر واتساب
+          </a>
+        </div>
+        <p class="note">ملف APK رسمي • حجمه ~55 ميغا • أندرويد 7 فأعلى</p>
+      </div>
+      <div class="phones" aria-hidden="true">
+        <div class="phone a"><img src="assets/03-pos.png" alt=""></div>
+        <div class="phone b"><img src="assets/02-dashboard.png" alt=""></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section>
+    <h2>كل اللي بحتاجه محلك</h2>
+    <p class="sub">من أول بيعة لحد آخر قرش دين</p>
+    <div class="grid">
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2M7 8v8M11 8v8M15 8v8M18 8v8"/></svg></span>
+        <h3>بيع بالباركود</h3><p>امسح بكاميرا الجوال صنفاً بعد صنف، مع صوت واهتزاز وشاشة بيع سريعة.</p></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 8 12 3 3 8v8l9 5 9-5V8ZM3 8l9 5 9-5M12 13v8"/></svg></span>
+        <h3>مخزون ذكي</h3><p>مفرق وجملة، كرتونة وحبة، تنبيه عند النقص وقبل انتهاء الصلاحية، وجرد بالباركود.</p></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></svg></span>
+        <h3>دفتر الديون</h3><p>الديون المتأخرة تظهر لحالها، وتذكير الزبون على واتساب بضغطة واحدة.</p></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2M6 14h12v8H6z"/></svg></span>
+        <h3>فواتير واتساب وطباعة</h3><p>ابعث الفاتورة للزبون على واتساب أو اطبعها على طابعة حرارية بالعربي.</p></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></span>
+        <h3>وضع العامل</h3><p>العامل بيبيع، والأرباح والتعديلات محمية برمزك أو ببصمتك، وكل عملية مسجلة.</p></div>
+      <div class="card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3v18h18M7 15l4-4 3 3 6-6"/></svg></span>
+        <h3>تقارير وأرباح</h3><p>صافي ربحك اليومي، الأصناف الأكثر مبيعاً، رسوم بيانية، وإقفال صندوق يومي.</p></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>شوف التطبيق</h2>
+    <p class="sub">واجهة عربية بسيطة، وفي وضع ليلي كمان</p>
+    <div class="shots">
+      <img src="assets/01-welcome.png" alt="شاشة البداية" loading="lazy">
+      <img src="assets/02-dashboard.png" alt="لوحة التحكم" loading="lazy">
+      <img src="assets/03-pos.png" alt="نقطة البيع" loading="lazy">
+      <img src="assets/04-items.png" alt="الأصناف والمخزون" loading="lazy">
+      <img src="assets/07-reports.png" alt="التقارير" loading="lazy">
+      <img src="assets/08-dashboard-dark.png" alt="الوضع الليلي" loading="lazy">
+    </div>
+  </section>
+
+  <section>
+    <h2>كيف أنزّله؟</h2>
+    <p class="sub">دقيقة وحدة وبتبلش تبيع</p>
+    <div class="steps">
+      <div class="step"><div><b>اضغط "نزّل التطبيق لأندرويد"</b><p>بيبلش التنزيل فوراً.</p></div></div>
+      <div class="step"><div><b>افتح الملف بعد التنزيل</b><p>إذا طلب منك "السماح من هذا المصدر"، فعّله وارجع.</p></div></div>
+      <div class="step"><div><b>اضغط تثبيت</b><p>إذا ظهرت رسالة Play Protect اضغط "تثبيت على أي حال".</p></div></div>
+      <div class="step"><div><b>افتح فورتكس واختر "محل جديد"</b><p>اكتب اسم محلك ورقمك، وابدأ تجربتك المجانية لست أيام.</p></div></div>
+    </div>
+  </section>
+
+  <div class="final">
+    <h2>جرّب فورتكس مجاناً اليوم</h2>
+    <p class="sub">بدون بطاقة، بدون إنترنت، وبياناتك على جوالك</p>
+    <div class="cta">
+      <a class="btn btn-blue dl" href="https://github.com/oalmazloum-cell/Vortix---/releases/latest/download/vortex.apk">نزّل التطبيق الآن</a>
+    </div>
+  </div>
+</main>
+
+<footer>فورتكس للمحاسبة © <span id="y"></span> • للتواصل: <a href="https://wa.me/972599331547" dir="ltr">+972 59 933 1547</a></footer>
+
+<div class="sticky"><a class="btn btn-blue dl" href="https://github.com/oalmazloum-cell/Vortix---/releases/latest/download/vortex.apk">⬇ نزّل فورتكس مجاناً</a></div>
+
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>

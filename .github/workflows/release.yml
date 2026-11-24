@@ -1,0 +1,91 @@
+# نشر إصدار جديد من فورتكس للزبائن:
+# - يبني APK موقّعاً بمفتاحك (من Secrets) ويرفعه كإصدار على GitHub باسم ثابت vortex.apk
+#   فيبقى رابط التنزيل نفسه دائماً ويُنزّل آخر نسخة:
+#   https://github.com/oalmazloum-cell/Vortix---/releases/latest/download/vortex.apk
+# - ينشر صفحة التطبيق (landing/) على GitHub Pages.
+# التشغيل: Actions ← "نشر إصدار للزبائن" ← Run workflow
+name: نشر إصدار للزبائن
+
+on:
+  workflow_dispatch:
+    inputs:
+      notes:
+        description: 'ما الجديد في هذا الإصدار؟'
+        required: false
+        default: 'تحسينات وإصلاحات'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: التحقق من مفتاح التوقيع
+        env:
+          KS: ${{ secrets.VORTEX_KEYSTORE_BASE64 }}
+          PW: ${{ secrets.VORTEX_KEYSTORE_PASSWORD }}
+        run: |
+          if [ -z "$KS" ] || [ -z "$PW" ]; then
+            echo "::error::أضف VORTEX_KEYSTORE_BASE64 و VORTEX_KEYSTORE_PASSWORD في Settings > Secrets and variables > Actions"
+            exit 1
+          fi
+          echo "$KS" | base64 -d > "$RUNNER_TEMP/vortex-release.jks"
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          flutter-version: 3.50.1
+          cache: true
+      - run: flutter pub get
+      - run: flutter test test/accounting_test.dart
+
+      - name: بناء APK موقّع
+        env:
+          VORTEX_KEYSTORE_PATH: ${{ runner.temp }}/vortex-release.jks
+          VORTEX_KEYSTORE_PASSWORD: ${{ secrets.VORTEX_KEYSTORE_PASSWORD }}
+          VORTEX_KEY_ALIAS: vortex
+        run: >
+          flutter build apk --release
+          --target-platform android-arm,android-arm64
+          --build-name 1.0.${{ github.run_number }}
+          --build-number ${{ github.run_number }}
+          --dart-define=SUPABASE_URL=${{ secrets.SUPABASE_URL }}
+          --dart-define=SUPABASE_ANON_KEY=${{ secrets.SUPABASE_ANON_KEY }}
+
+      - run: cp build/app/outputs/flutter-apk/app-release.apk vortex.apk
+
+      - name: نشر الإصدار
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: فورتكس 1.0.${{ github.run_number }}
+          body: |
+            ${{ inputs.notes }}
+
+            ⬇ التنزيل المباشر: https://github.com/${{ github.repository }}/releases/latest/download/vortex.apk
+          make_latest: true
+          files: vortex.apk
+
+  pages:
+    needs: release
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: landing
+      - id: deploy
+        uses: actions/deploy-pages@v4
